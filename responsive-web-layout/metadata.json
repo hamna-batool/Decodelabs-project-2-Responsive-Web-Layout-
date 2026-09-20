@@ -1,0 +1,6 @@
+{
+  "name": "Responsive Web Layout",
+  "description": "A responsive webpage with CSS media queries, adaptive navigation, and fluid multi-breakpoint layouts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

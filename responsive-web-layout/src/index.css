@@ -1,0 +1,206 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   CSS Media Queries & Responsive Layout Systems
+   Demonstrating mobile-first, tablet, desktop, and fluid media queries
+   ========================================================================== */
+
+:root {
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --spacing-container-mobile: 1rem;
+  --spacing-container-tablet: 1.5rem;
+  --spacing-container-desktop: 2.5rem;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+}
+
+/* Base custom responsive container using CSS clamp and media queries */
+.custom-responsive-container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-container-mobile);
+  padding-right: var(--spacing-container-mobile);
+}
+
+/* ==========================================================================
+   Explicit CSS Media Query: Mobile Screens (< 640px)
+   ========================================================================== */
+@media screen and (max-width: 639px) {
+  .mq-badge-active::after {
+    content: "Mobile Viewport (< 640px)";
+  }
+
+  .mq-layout-hero {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    padding-top: 2rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .mq-layout-grid-adaptive {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .mq-nav-desktop-links {
+    display: none !important;
+  }
+
+  .mq-nav-mobile-trigger {
+    display: flex !important;
+  }
+
+  .mq-fluid-hero-title {
+    font-size: clamp(2rem, 8vw, 2.75rem);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+  }
+
+  .mq-card-padding {
+    padding: 1.25rem;
+  }
+}
+
+/* ==========================================================================
+   Explicit CSS Media Query: Tablet Screens (640px to 1023px)
+   ========================================================================== */
+@media screen and (min-width: 640px) and (max-width: 1023px) {
+  .custom-responsive-container {
+    padding-left: var(--spacing-container-tablet);
+    padding-right: var(--spacing-container-tablet);
+  }
+
+  .mq-badge-active::after {
+    content: "Tablet Viewport (640px - 1023px)";
+  }
+
+  .mq-layout-hero {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding-top: 3rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .mq-layout-grid-adaptive {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .mq-nav-desktop-links {
+    display: flex;
+    gap: 1.25rem;
+  }
+
+  .mq-nav-mobile-trigger {
+    display: none !important;
+  }
+
+  .mq-fluid-hero-title {
+    font-size: clamp(2.75rem, 5vw, 3.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+  }
+
+  .mq-card-padding {
+    padding: 1.75rem;
+  }
+}
+
+/* ==========================================================================
+   Explicit CSS Media Query: Desktop Screens (>= 1024px)
+   ========================================================================== */
+@media screen and (min-width: 1024px) {
+  .custom-responsive-container {
+    padding-left: var(--spacing-container-desktop);
+    padding-right: var(--spacing-container-desktop);
+    max-width: 80rem; /* 1280px */
+  }
+
+  .mq-badge-active::after {
+    content: "Desktop Viewport (≥ 1024px)";
+  }
+
+  .mq-layout-hero {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: 3.5rem;
+    padding-top: 4.5rem;
+    padding-bottom: 5rem;
+  }
+
+  .mq-layout-grid-adaptive {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .mq-nav-desktop-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .mq-nav-mobile-trigger {
+    display: none !important;
+  }
+
+  .mq-fluid-hero-title {
+    font-size: clamp(3.5rem, 4vw, 4.25rem);
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+  }
+
+  .mq-card-padding {
+    padding: 2rem;
+  }
+}
+
+/* ==========================================================================
+   Explicit CSS Media Query: Large Desktop (>= 1280px)
+   ========================================================================== */
+@media screen and (min-width: 1280px) {
+  .mq-badge-active::after {
+    content: "Large Desktop Viewport (≥ 1280px)";
+  }
+  
+  .mq-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.75rem;
+  }
+}
+
+@media screen and (max-width: 1279px) and (min-width: 768px) {
+  .mq-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .mq-bento-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+/* Accessibility: respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
